@@ -1,0 +1,36 @@
+                
+<head>
+  <script src="https://code.jquery.com/jquery.min.js" type="text/javascript"></script> 
+    
+
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDda0cWOYTonnekfU21XODVpTxLvRNzgZg&callback=initMap">
+  </script>
+</head>               
+                
+
+<div id="map"></div>
+                     <script>
+                    function initMap() {
+                    
+            
+                    var map = new google.maps.Map(document.getElementById('map'), {
+                      zoom: 7,
+                      center: myLatlng = {lat: 49.8127465539989, lng: 15.305122004496024},
+                    });
+            
+                    new google.maps.Marker({
+                    position: {lat: 49.913404, lng: 13.986482},
+                    map,
+                    title: "Jahodárna Zdice",
+                    });
+
+                   
+                    new google.maps.Marker({
+                    position: {lat:49.622793, lng: 13.632180},
+                    map,
+                    title: "Sady Těnovice",
+                    });
+
+                    }
+                    </script>

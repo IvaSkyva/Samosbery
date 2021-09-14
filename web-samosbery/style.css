@@ -1,0 +1,176 @@
+*, :after, :before {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  max-width: 1400px;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-image: url("podklad2glass.jpg");
+}
+
+.hlavicka p {
+  background-color: #92d66b;
+  border-radius: 10px;
+  padding: 10px;
+  color: darkgreen;
+}
+
+.hlavicka img {
+  width: 250px;
+  background-color: white;
+}
+
+@media screen and (min-width: 600px) {
+  .hlavicka {
+    padding: 20 40 20 40;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .hlavicka p {
+    text-align: left;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+}
+
+.obalobsahu .menu1 {
+  background-color: wheat;
+  color: #7e680a;
+  border-color: #7e680a;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+.obalobsahu .menu2 {
+  background-color: wheat;
+  color: #7e680a;
+  border-color: #7e680a;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+.obalobsahu .text {
+  background-color: wheat;
+  border-color: #7e680a;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+.obalobsahu ul {
+  list-style: none;
+  margin: 0;
+  padding-bottom: 20px;
+}
+
+.obalobsahu .kontejner1 {
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.obalobsahu .kontejner2 p {
+  padding: 20px;
+}
+
+.obalobsahu #map {
+  height: 350px;
+}
+
+@media screen and (min-width: 600px) {
+  .obalobsahu {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .obalobsahu .kontejner1 {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
+  }
+  .obalobsahu .kontejner2 {
+    -ms-flex-preferred-size: 45%;
+        flex-basis: 45%;
+  }
+  .obalobsahu .kontejner3 {
+    -ms-flex-preferred-size: 45%;
+        flex-basis: 45%;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .obalobsahu {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 calc((100% - 20px) / 3);
+            flex: 0 0 calc((100% - 20px) / 3);
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .obalobsahu .kontejner1 {
+    -ms-flex-preferred-size: 10%;
+        flex-basis: 10%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .obalobsahu .kontejner2 {
+    -ms-flex-preferred-size: 40%;
+        flex-basis: 40%;
+  }
+  .obalobsahu .kontejner3 {
+    -ms-flex-preferred-size: 40%;
+        flex-basis: 40%;
+    width: 100%;
+  }
+  .obalobsahu #map {
+    height: 450px;
+  }
+}
+
+.paticka {
+  background-color: #92d66b;
+  border-radius: 10px;
+}
+/*# sourceMappingURL=style.css.map */

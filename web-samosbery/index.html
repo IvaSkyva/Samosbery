@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Samosbery</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<script
+src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap&libraries=localContext&v=beta"
+defer
+></script>
+
+</head>
+<body>
+
+<div class="hlavicka">
+
+    <div class="logo">
+        <img src="logo.png" alt="logo">
+    </div>
+    <p>Zajímáte se o zdravý životní styl a kvalitní potraviny, které si pečlivě vybíráte, ovoce a zeleninu si sami nakládáte či zavařujete, ale nemáte prostor pro pěstování?
+    Na naší mapě najdete místa, nabízející samosběry sezónních plodin.</p> 
+</div>
+    
+    <div class="obalobsahu">
+
+        
+            <div class="kontejner1">
+                
+                    <ul class="menu1">
+                    <li><a href=""></a>Úvod</li>
+                    <li><a href=""></a>Kontakt</li>
+                    </ul>
+
+                
+
+                    <ul class="menu2">
+                    <p>Jak uskladnit:</p>
+                    <li><a href=""></a>brambory</li>
+                    <li><a href=""></a>cibuli</li>
+                    <li><a href=""></a>jablka</li>
+                    </ul>
+                
+            </div>
+
+        
+    
+
+            <div class="kontejner2">
+
+                <div class="text">
+                    
+
+                    <ul>
+                        Termíny samosběrů:
+                        <li>?</li>
+                        <li>?</li>
+                        <li>?</li>
+                        <li>?</li>
+                    </ul>
+                </div>
+                
+                 
+
+            </div><!-- kontejner2 -->
+        
+
+            <div class="kontejner3">
+
+                <div id="map"></div>
+                <script>
+                let map;
+                let myLatlng = {lat: 49.8127465539989, lng: 15.305122004496024};
+let infoWindow;
+let infoStorage;
+const districts = {
+  a: {
+    label: "1",
+    location: {
+      lat: 49.913404,
+      lng: 13.986482,
+    },
+    name: "Jahodárna Zdice",
+    description:
+      "Samosběry jahod, cibule, jablek",
+  },
+  b: {
+    label: "2",
+    location: {
+      lat: 49.622793,
+      lng: 13.632180,
+    },
+    name: "Sady Těnovice",
+    description:
+      "Prodej vlastních jablek ",
+  },
+  c: {
+    label: "3",
+    location: {
+      lat: 49.652697,
+      lng: 18.212997,
+    },
+    name: "Farma Lička",
+    description:
+      "Bedýnky, samosběry, prodej ze dvora",
+  },
+};
+
+function initMap() {
+  const localContextMapView = new google.maps.localContext.LocalContextMapView({
+    element: document.getElementById("map"),
+    placeTypePreferences: ["restaurant", "tourist_attraction"],
+    maxPlaceCount: 12,
+  });
+  map = localContextMapView.map;
+  map.setOptions({
+    center: districts["a"].location,
+    zoom: 7,
+  });
+
+  // Add 3 custom markers that open InfoWindows on click
+  for (const key in districts) {
+    const district = districts[key];
+    const marker = new google.maps.Marker({
+      label: district.label,
+      position: district.location,
+      map: map,
+      zIndex: 30,
+    });
+    marker.addListener("click", () => {
+      // Close any open details or existing InfoWindows
+      localContextMapView.hidePlaceDetailsView();
+
+      if (infoWindow) {
+        infoWindow.close();
+      }
+      // Create and open a new InfoWindow
+      createInfoWindow(district, marker);
+      // Define origin as the selected marker position
+      localContextMapView.directionsOptions = {
+        origin: district.location,
+      };
+    });
+  }
+  // Set the LocalContextMapView event handlers.
+  localContextMapView.addListener("placedetailsviewshowstart", () => {
+    if (infoWindow) {
+      infoWindow.close();
+    }
+  });
+  localContextMapView.addListener("placedetailsviewhidestart", () => {
+    if (infoStorage) {
+      createInfoWindow(infoStorage.district, infoStorage.marker);
+    }
+  });
+}
+
+// Creates an infoWindow and also stores information associated with the
+// InfoWindow so the InfoWindow can be restored after it has been closed
+// by non-user-initiated events.
+function createInfoWindow(district, marker) {
+  // Build the content of the InfoWindow
+  const contentDiv = document.createElement("div");
+  const nameDiv = document.createElement("div");
+  const descriptionDiv = document.createTextNode(district.description);
+  contentDiv.classList.add("infowindow-content");
+  nameDiv.classList.add("title");
+  nameDiv.textContent = district.name;
+  descriptionDiv.textContent = district.description;
+  contentDiv.appendChild(nameDiv);
+  contentDiv.appendChild(descriptionDiv);
+  // Create and open a new InfoWindow
+  infoWindow = new google.maps.InfoWindow();
+  infoWindow.setContent(contentDiv);
+  infoWindow.open(map, marker);
+  // Store key properties of the InfoWindow for future restoration
+  infoStorage = {
+    district: district,
+    marker: marker,
+  };
+  // Clear content storage if infoWindow is closed by the user
+  infoWindow.addListener("closeclick", () => {
+    if (infoStorage) {
+      infoStorage = null;
+    }
+  });
+}
+
+</script>        
+            </div><!--kontejner3-->
+        
+
+    </div>
+
+    <div class="paticka">
+        <h2>Patička</h2>
+    </div>
+
+
+</body>
+</html>
